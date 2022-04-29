@@ -159,6 +159,27 @@ export const createCompra = async (req, res, next) => {
     }
 }}
 
+//6
+export const getComprabydate = (req, res, next) => {
+    const fecha1 = req.params.fecha1;
+    const fecha2 = req.params.fecha2;
+    const dates= DUMMY_COMPRAS.filter(c => {return (c.fechaHoraCompra >= fecha1) && (c.fechaHoraCompra <= fecha2)})
+    res.json(dates);
+}
+
+//7
+export const getComprabyValor =(req, res, next) => {
+    const valor1 = req.params.fecha1;
+    const valor2 = req.params.fecha2;
+    const dates = DUMMY_COMPRAS.filter(c => {return (c.totalCompra >= valor1) && (c.totalCompra <= valor2)});
+    res.json(dates);
+}
+
+//8
+export const getALL =(req, res, next) => {
+    res.status(150).send({detalles: DUMMY_COMPRAS})
+}
+
 //9 WIP
 
 export const updateCompra = (req, res, next) => {
